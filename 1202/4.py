@@ -39,5 +39,4 @@ print("Következő kör, üss ENTER-t!")
 p1dobas=random.randint(1,6)
 p2dobas=random.randint(1,6)
 print("1. játékos dobása: ",p1dobas)
-print("2. játékos dobása: ",p2dobas)    
-    
+print("2. játékos dobása: ",p2dobas)        

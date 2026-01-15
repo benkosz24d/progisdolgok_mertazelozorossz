@@ -1,8 +1,10 @@
 szamok = ["3,24", "1,33", "4,5", "3,33", "4,25"]
+ujszamok = []
 
-javított_szamok = [float(szam.replace(",", ".")) for szam in szamok]
+for elem in szamok:
+    ujszamok.append(float(elem.replace(",", ".")))
 
-atlag = sum(javított_szamok) / len(javított_szamok)
+atlag = round(sum(ujszamok) / len(ujszamok), 2)
 
-print("Javított számok:", javított_szamok)
+print("Javított számok:", ujszamok)
 print("Átlag:", atlag)

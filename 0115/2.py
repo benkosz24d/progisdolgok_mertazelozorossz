@@ -4,7 +4,7 @@ osszeg = 0
 szam = ""
 
 for karakter in szoveg:
-    if '0' <= karakter <= '9':   
+    if '0' <= karakter <= '9':
         szam += karakter
     else:
         if szam != "":

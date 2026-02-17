@@ -1,0 +1,3 @@
+A diákok száma: 25 fő
+A legmagasabb diák: Csaba Kiss (199 cm)
+Az osztály átlagéletkora: 17.32 év

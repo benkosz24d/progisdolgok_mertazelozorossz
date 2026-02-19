@@ -1,24 +1,22 @@
-diakok = []
+with open("0219/diak.txt", "r", encoding="utf-8") as file:
+    sorok = file.readlines()
 
-with open("0219/diak.txt", "r", encoding="utf-8") as fajl:
-    for sor in fajl:
-        nev, magassag = sor.strip().split(";")
-        diakok.append((nev, int(magassag)))
+diakok_szama = 0
+legmagasabb_nev = ""
+legmagasabb_magassag = 0
+for sor in sorok:
+    adatok = sor.strip().split(";")
+    
+    nev = adatok[0].strip()
+    magassag = int(adatok[1].strip())
+    
+    diakok_szama += 1
+    
+    if magassag > legmagasabb_magassag:
+        legmagasabb_magassag = magassag
+        legmagasabb_nev = nev
 
-print("A diákok száma:", len(diakok))
-
-legmagasabb = diakok[0]
-
-for diak in diakok:
-    if diak[1] > legmagasabb[1]:
-        legmagasabb = diak
-
-print("A legmagasabb tanuló:", legmagasabb[0], "-", legmagasabb[1], "cm")
-
-diakok_rendezve = sorted(diakok, key=lambda x: x[1], reverse=True)
-
-with open("0219/rendezve.txt", "w", encoding="utf-8") as fajl:
-    for diak in diakok_rendezve:
-        fajl.write(f"{diak[0]};{diak[1]}\n")
-
-print("A rendezett lista kiírva a rendezve.txt fájlba.")
+with open("0219/valasz.txt", "w", encoding="utf-8") as file:
+    file.write(f"A diákok száma: {diakok_szama} fő\n")
+    file.write(f"A legmagasabb diák: {legmagasabb_nev} ({legmagasabb_magassag} cm)\n")
+print("A valasz.txt fájl sikeresen létrejött!")

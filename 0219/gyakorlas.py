@@ -1,22 +1,30 @@
-with open("0219/diak.txt", "r", encoding="utf-8") as file:
-    sorok = file.readlines()
+class Diak:
+    def __init__(self, nev, magassag):
+        self.nev = nev
+        self.magassag = magassag
 
-diakok_szama = 0
-legmagasabb_nev = ""
-legmagasabb_magassag = 0
-for sor in sorok:
-    adatok = sor.strip().split(";")
-    
-    nev = adatok[0].strip()
-    magassag = int(adatok[1].strip())
-    
-    diakok_szama += 1
-    
-    if magassag > legmagasabb_magassag:
-        legmagasabb_magassag = magassag
-        legmagasabb_nev = nev
+#fájl feldolgozás
+fajl=open("0219/diak.txt","r",encoding="UTF-8")
+Ltartalom=fajl.read().split("\n")
 
-with open("0219/valasz.txt", "w", encoding="utf-8") as file:
-    file.write(f"A diákok száma: {diakok_szama} fő\n")
-    file.write(f"A legmagasabb diák: {legmagasabb_nev} ({legmagasabb_magassag} cm)\n")
-print("A valasz.txt fájl sikeresen létrejött!")
+#üres lista létrehozása
+Ldiakok=[]
+
+#; mentén szétválasztjuk a sort
+for sor in Ltartalom:
+    darabok=sor.split(";")
+    nev=darabok[0]
+    magassag=int(darabok[1])
+    #példányosítás - osztály   
+    diak=Diak(nev,magassag)
+    Ldiakok.append(diak)
+
+#1. feladat
+print("Diákok száma:",len(Ldiakok),"fő")
+
+#2.feladat
+legmagasabb=max(Ldiakok,key=lambda m: m.magassag)
+print("Legmagasabb diák:",legmagasabb.nev,"magassága:",legmagasabb.magassag,"cm")
+
+#3.feladat
+Lrendezett=sorted(Ldiakok,key=lambda m: m.magassag)
